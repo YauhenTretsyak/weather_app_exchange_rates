@@ -13,6 +13,7 @@ const Button = styled.p`
   &:hover {
     cursor: pointer;
     font-size: 2rem;
+    color: #f2ff30;
     box-shadow: inset 0 0 1.7rem .3rem ${({theme}) => theme.colors.white};
   }
 

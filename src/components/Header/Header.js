@@ -1,17 +1,9 @@
 import { useContext, memo } from 'react';
 import { LocationContext } from '../../context/locationService';
-import { ExchangeRates } from '../../blocks';
+import { ExchangeRatesHeader } from '../../blocks';
 
-import styled from 'styled-components';
-import { SectionContainer, SectionTitle } from '../../styles/StyledElements';
+import { HeaderSection, HeaderTitle } from './Header.styles';
 
-const HeaderSection = styled(SectionContainer)`
-  display: flex;
-  align-items: center;
-`
-const HeaderTitle = styled(SectionTitle)`
-  margin-bottom: 0;
-`
 
 const Header = () => {
 
@@ -24,7 +16,7 @@ const Header = () => {
       <HeaderTitle>
         City: { city || '--' }
       </HeaderTitle>
-      <ExchangeRates />
+      <ExchangeRatesHeader />
     </HeaderSection>
   )
 }

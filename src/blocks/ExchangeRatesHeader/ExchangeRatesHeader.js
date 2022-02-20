@@ -1,11 +1,16 @@
+import { useMemo, useState } from 'react';
 import axios from 'axios';
-import { useMemo, useEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import { ExchangeRatesItem } from '..';
 
 import styled from 'styled-components';
 
-const ExchangeRatesWrapper = styled.div``
+const ExchangeRatesHeaderWrapper = styled.div`
+  width: 100%;
+  max-width: 18.5rem;
+`
 
-const ExchangeRates = () => {
+const ExchangeRatesHeader = () => {
 
   const [currency, setCurrency] = useState([])
 
@@ -24,7 +29,8 @@ const ExchangeRates = () => {
           const newKey = key.slice(0, 3);
           const currencyObj = {}
           
-          currencyObj[newKey] = mathFloorFunc(newCurrencyData[key])
+          currencyObj['rate'] = newKey
+          currencyObj['value'] = mathFloorFunc(newCurrencyData[key])
           
           currencyData = [
             ...currencyData,
@@ -41,22 +47,27 @@ const ExchangeRates = () => {
     )
   }
 
-  // console.log(
-  //   mathFloorFunc(45.098765)
-  // )
-
   useMemo(() => {
     getCurrencyExchange(setCurrency)
   }, [])
 
-  console.log(currency)
+ 
+  const currencyExchange = currency.map(item => {
+    return(
+      <ExchangeRatesItem 
+        key={ uuidv4() }
+        rate={ item.rate }
+        value={ item.value }
+      />
+    )
+  })
 
   return(
-    <ExchangeRatesWrapper>
-
-    </ExchangeRatesWrapper>
+    <ExchangeRatesHeaderWrapper>
+      { currencyExchange }
+    </ExchangeRatesHeaderWrapper>
   )
 }
 
-export default ExchangeRates;
+export default ExchangeRatesHeader;
 
