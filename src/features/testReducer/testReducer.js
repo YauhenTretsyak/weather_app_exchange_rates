@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { useEffect } from "react";
 
 const testReducer = createSlice({
   name: 'testing',
@@ -7,7 +8,7 @@ const testReducer = createSlice({
   },
 
   reducers: {
-    increment: (state) => {
+    increment: (state, action) => {
       state.value += 1
     },
 

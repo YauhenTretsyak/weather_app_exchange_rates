@@ -9,7 +9,6 @@ const mathFloorFunc = (item) => {
     Math.floor((item) * 10000) / 10000
   )
 }
-// const [currency, setCurrency] = useState([])
 
 export const getExchangeRates = createAsyncThunk(
   'rates/getExchangeRates',

@@ -1,12 +1,18 @@
-import { useContext, useEffect } from 'react';
-import { LocationContext } from '../../context/locationService';
+import { useEffect, useState } from 'react';
 import { WeatherCard, ChooseCity } from '../../blocks';
+import { useSelector, useDispatch } from 'react-redux';
+import { getUserLocation } from '../../features/getUserLocationWeather/getUserLocationWeather';
+import { setDailyWeatherData } from '../../features/setDailyWeather/setDailyWeather';
 
 import { WeatherSection, WheaterInfoWrapper, CityName } from './Weather.styles';
 
 const Weather = () => {
-  const { locationWeather, GetStartLocation,  GetWeatherData } = useContext(LocationContext);
-  const  city  = locationWeather.city;
+
+  const [cityName, setCityName] = useState('--');
+
+  const currentLocation = useSelector((state) => state.locationData)
+  const dailyWeatherData = useSelector((state) => state.dailyWeatherData)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -14,9 +20,11 @@ const Weather = () => {
         
         const longitude = position.coords.longitude;
         const latitude = position.coords.latitude;
+        const coords = {latitude: latitude, longitude: longitude}
 
         if(latitude && longitude) {
-          GetStartLocation(latitude, longitude);
+
+          dispatch(getUserLocation(coords));
         }
       },
 
@@ -24,14 +32,20 @@ const Weather = () => {
         console.log(error)
       }
     )
-    
-    GetWeatherData()
   }, [])
+
+  useEffect(() => {
+    dispatch(setDailyWeatherData(currentLocation.locationWeather))
+    setCityName(dailyWeatherData.dailyWeatherData.name)
+  }, [currentLocation.locationWeather, dailyWeatherData.dailyWeatherData.name])
+
+ 
+
 
   return (
     <WeatherSection>
       <WheaterInfoWrapper>
-        <CityName>{ city || '--' }</CityName>
+        <CityName>{ cityName }</CityName>
         <WeatherCard />
       </WheaterInfoWrapper>
       <ChooseCity />

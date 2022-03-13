@@ -17,9 +17,9 @@ const ExchangeRatesHeader = () => {
   const currency = useSelector((state) => state.ratesData);
   const dispatch = useDispatch()
   
-  useEffect(() => {
-    dispatch(getExchangeRates())
-  }, [])
+  // useEffect(() => {
+  //   dispatch(getExchangeRates())
+  // }, [])
 
   
   const currencyExchange = currency.rates.map(item => {

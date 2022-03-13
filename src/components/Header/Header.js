@@ -9,13 +9,13 @@ import { HeaderSection, HeaderTitle } from './Header.styles';
 
 const Header = () => {
 
-  // const testing = useSelector((state) => state.testing.value);
-  // const dispatch = useDispatch()
+  const testing = useSelector((state) => state.testing.value);
+  const dispatch = useDispatch()
    
 
-  // useMemo(() => {
-  //   console.log(testing)
-  // }, [testing])
+  useMemo(() => {
+    console.log(testing)
+  }, [testing])
 
   const { locationWeather } = useContext(LocationContext);
 
@@ -28,12 +28,12 @@ const Header = () => {
       </HeaderTitle>
       <ExchangeRatesHeader />
 
-      {/* <button onClick={ () => {dispatch(increment())} }>
+      <button onClick={ () => {dispatch(increment('ok'))} }>
         click to up
       </button>
       <button onClick={ () => {dispatch(decrement())} }>
         click to down
-      </button> */}
+      </button>
     </HeaderSection>
   )
 }
