@@ -3,6 +3,7 @@ import { WeatherCard, ChooseCity } from '../../blocks';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUserLocation } from '../../features/getUserLocationWeather/getUserLocationWeather';
 import { setDailyWeatherData } from '../../features/setDailyWeather/setDailyWeather';
+import { dailyWeather } from '../../features/setDailyWeather/setDailyWeather';
 
 import { WeatherSection, WheaterInfoWrapper, CityName } from './Weather.styles';
 
@@ -11,7 +12,6 @@ const Weather = () => {
   const [cityName, setCityName] = useState('--');
 
   const currentLocation = useSelector((state) => state.locationData)
-  const dailyWeatherData = useSelector((state) => state.dailyWeatherData)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -34,10 +34,12 @@ const Weather = () => {
     )
   }, [])
 
+  
+
   useEffect(() => {
-    dispatch(setDailyWeatherData(currentLocation.locationWeather))
-    setCityName(dailyWeatherData.dailyWeatherData.name)
-  }, [currentLocation.locationWeather, dailyWeatherData.dailyWeatherData.name])
+      dispatch(setDailyWeatherData(currentLocation.locationWeather))
+      setCityName(dailyWeather.city)
+  }, [currentLocation.locationWeather])
 
  
 

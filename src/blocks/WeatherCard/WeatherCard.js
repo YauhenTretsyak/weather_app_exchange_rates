@@ -1,5 +1,5 @@
-import { useState, useEffect, useContext } from 'react';
-import { LocationContext } from '../../context/locationService';
+import { useState, useEffect } from 'react';
+import { dailyWeather } from '../../features/setDailyWeather/setDailyWeather';
 
 import {
   WeatherCardWrapper,
@@ -13,9 +13,8 @@ import {
 
 
 const WeatherCard = () => {
-  const { locationWeather } = useContext(LocationContext);
 
-  const { temperature, pressure, windSpeed, icon } = locationWeather;
+  const { temperature, pressure, windSpeed, icon } = dailyWeather;
   const [temp, getTemp] = useState(temperature);
   const tempCelsius = temperature-273;
 

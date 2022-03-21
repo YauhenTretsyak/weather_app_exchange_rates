@@ -19,7 +19,21 @@ export const getUserLocation = createAsyncThunk(
 const locationSlice = createSlice({
   name: 'location',
   initialState: {
-    locationWeather: [],
+    locationWeather: {
+      name: '--',
+      main: {
+        temp: '--',
+        pressure: '--'
+      },
+      weather: [
+        {
+          icon: '01d'
+        }
+      ],
+      wind: {
+        speed: '--'
+      },
+    },
     status: null,
     error: null,
   },
