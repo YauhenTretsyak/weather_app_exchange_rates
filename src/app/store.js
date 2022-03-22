@@ -4,7 +4,8 @@ import testReducer from '../features/testReducer/testReducer'
 import ratesSlice from '../features/getExhangeRates/getExhangeRates';
 import locationSlice from '../features/getUserLocationWeather/getUserLocationWeather';
 import dailyWeatherDataSlice from '../features/setDailyWeather/setDailyWeather';
-
+import newCityWeatherSlice from '../features/setUserSearch/setUserSearch';
+import zipSearchWeatherSlice from '../features/setZipSearch/setZipSearch';
 
 export default configureStore({
   reducer: {
@@ -13,5 +14,7 @@ export default configureStore({
     ratesData: ratesSlice,
     locationData: locationSlice,
     dailyWeatherData: dailyWeatherDataSlice,
+    searchCityWeather: newCityWeatherSlice,
+    searchZipWeather: zipSearchWeatherSlice,
   }
 })

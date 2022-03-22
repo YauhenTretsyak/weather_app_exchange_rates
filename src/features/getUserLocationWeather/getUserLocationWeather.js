@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const apiUrl = 'https://api.openweathermap.org/'
-const apiKey = '9980f38164f1b2cf7d9081d38f49a7fe';
+export const apiUrl = 'https://api.openweathermap.org/'
+export const apiKey = '9980f38164f1b2cf7d9081d38f49a7fe';
 
 export const getUserLocation = createAsyncThunk(
   'location/getUserLocation',

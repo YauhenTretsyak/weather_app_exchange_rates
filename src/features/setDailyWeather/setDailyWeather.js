@@ -16,11 +16,26 @@ export let dailyWeather = {
   },
 }
 
+console.log(dailyWeather)
 
 const setDailyWeatherSlice = createSlice({
   name: 'dailyWeather',
   initialState: {
-    dailyWeatherData: {}
+    dailyWeatherData: {
+      name: '--',
+      main: {
+        temp: '--',
+        pressure: '--'
+      },
+      weather: [
+        {
+          icon: '01d'
+        }
+      ],
+      wind: {
+        speed: '--'
+      },
+    }
   },
 
   reducers: {
@@ -36,7 +51,7 @@ const setDailyWeatherSlice = createSlice({
       }
 
       dailyWeather = state.dailyWeatherData
-      console.log(dailyWeather)
+      // console.log(dailyWeather)
     }
   }
 })

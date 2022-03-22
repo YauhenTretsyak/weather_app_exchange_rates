@@ -1,5 +1,9 @@
 import { LocationContext } from '../../context/locationService';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setDailyWeatherData } from '../../features/setDailyWeather/setDailyWeather';
+import { setUserSearch } from '../../features/setUserSearch/setUserSearch'
+import { setZipSearch } from '../../features/setZipSearch/setZipSearch';
 import { v4 as uuidv4 } from 'uuid';
 import { SavedLocations, ErrorMenu } from '..';
 
@@ -28,9 +32,26 @@ const ChooseCity = () => {
     ToDisplayZipCodeErrorMenu
   } = useContext(LocationContext);
 
+  const getNewWeatherData = useSelector((state) => state.searchCityWeather.newLocationWeather)
+  const getZipWeatherData = useSelector((state) => state.searchZipWeather.newZipLocation)
+  const dispatch = useDispatch();
+
   const [cityName, setCityName] = useState('')
   const [zipData, setZipData] = useState('')
   const [isOnSaveOption, setIsOnSaveOption] = useState(true);
+
+
+  useEffect(() => {
+    if(getNewWeatherData.name) {
+      dispatch(setDailyWeatherData(getNewWeatherData))
+    }
+  }, [getNewWeatherData])
+
+  useEffect(() => {
+    if(getZipWeatherData.name) {
+      dispatch(setDailyWeatherData(getZipWeatherData))
+    }
+  }, [getZipWeatherData])
 
 
   const setSaveBtnActive = () => {
@@ -49,7 +70,8 @@ const ChooseCity = () => {
   }
 
   const ToSearchCityName = () => {
-    GetUserSearchLocation(cityName);
+    // GetUserSearchLocation(cityName);
+    dispatch(setUserSearch(cityName)) 
     setCityName('') 
     setSaveBtnActive()
   }
@@ -69,7 +91,8 @@ const ChooseCity = () => {
         countryCode: countryCode 
       }
 
-      GetUserSearchFromZipCode(zipObj)
+      // GetUserSearchFromZipCode(zipObj)
+      dispatch(setZipSearch(zipObj))
       setZipData('')
       setSaveBtnActive()
     } else {
