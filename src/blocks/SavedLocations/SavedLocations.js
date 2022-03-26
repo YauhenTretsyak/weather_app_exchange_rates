@@ -8,7 +8,6 @@ const SavedLocations = (props) => {
   const { id, cityName, setSaveBtnActive } = props;
   const dispatch = useDispatch()
   const { savedLocationsData } = useSelector((state) => state.saveCurrentCity)
-console.log(cityName)
 
   const ToShowHandler = () => {
     const CardData = savedLocationsData.filter((item) => {return item.id === id})
@@ -19,6 +18,7 @@ console.log(cityName)
   const ToRemoveHandler = () => {
     const NewCardData = savedLocationsData.filter((item) => {return item.id !== id})
     dispatch(removeCity(NewCardData))
+    window.localStorage.setItem('SavedWeatherLocation', JSON.stringify(NewCardData));
     setSaveBtnActive()
   }
 

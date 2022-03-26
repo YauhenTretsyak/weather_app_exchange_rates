@@ -44,16 +44,18 @@ const newCityWeatherSlice = createSlice({
       state.status = 'loading';
       state.error = null;
     },
-    [setUserSearch.rejected]: (state, action) => {
-      state.status = 'error';
-      state.error = true;
-      console.log(state.error)
-    },
     [setUserSearch.fulfilled]: (state, action) => {
       state.status = 'resolved';
       state.newLocationWeather = action.payload
+      if(action.payload.cod !== 200) {
+        state.error = true;
+      }
     },
-
+    [setUserSearch.rejected]: (state, action) => {
+      state.status = 'error';
+      state.error = true;
+    },
+    
   }
 })
 

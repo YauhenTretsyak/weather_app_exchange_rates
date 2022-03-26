@@ -1,8 +1,8 @@
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeErrorName } from '../../features/setUserSearch/setUserSearch';
 import { removeErrorZip } from '../../features/setZipSearch/setZipSearch';
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
 
 const ErrorMenuWrapper = styled.div`
   display: ${props => props.isError ? 'flex' : 'none'};
@@ -25,13 +25,17 @@ const CloseBtn = styled.p`
   top: 1rem;
   right: 1rem;
   color: red;
+
+  &:hover {
+    cursor: pointer;
+  }
 `
 
-const ErrorMenu = (props) => {
+const ErrorMenu = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [isError, setIsError] = useState(false);  
-  const errorCityName = useSelector((state) => state.searchZipWeather.error)
-  const errorZipCode = useSelector((state) => state.searchCityWeather.error)
+  const errorCityName = useSelector((state) => state.searchCityWeather.error)
+  const errorZipCode = useSelector((state) => state.searchZipWeather.error)
 
   const dispatch = useDispatch();
 

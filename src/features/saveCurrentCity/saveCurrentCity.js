@@ -18,8 +18,10 @@ export const saveCurrentCitySlice = createSlice({
           cityName: cityName
         }
       ]
+    },
 
-      console.log(state.savedLocationsData)
+    dataLoadFromLocalStorage: (state, action) => {
+      state.savedLocationsData = action.payload;
     },
 
     removeCity: (state, action) => {
@@ -28,5 +30,5 @@ export const saveCurrentCitySlice = createSlice({
   }
 })
 
-export const { saveCity, removeCity } = saveCurrentCitySlice.actions
+export const { saveCity, removeCity, dataLoadFromLocalStorage } = saveCurrentCitySlice.actions
 export default saveCurrentCitySlice.reducer
