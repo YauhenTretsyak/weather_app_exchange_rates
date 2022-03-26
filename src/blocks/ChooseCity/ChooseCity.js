@@ -2,8 +2,9 @@ import { LocationContext } from '../../context/locationService';
 import { useState, useContext, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setDailyWeatherData } from '../../features/setDailyWeather/setDailyWeather';
-import { setUserSearch } from '../../features/setUserSearch/setUserSearch'
+import { setUserSearch } from '../../features/setUserSearch/setUserSearch';
 import { setZipSearch } from '../../features/setZipSearch/setZipSearch';
+import { saveCity } from '../../features/saveCurrentCity/saveCurrentCity';
 import { v4 as uuidv4 } from 'uuid';
 import { SavedLocations, ErrorMenu } from '..';
 
@@ -26,7 +27,7 @@ const ChooseCity = () => {
     GetUserSearchFromZipCode, 
     ToSaveUsersLocations, 
     locationWeather,
-    savedLocationsData,
+    // savedLocationsData,
     errorMessage,
     ToCloseErrorMenu,
     ToDisplayZipCodeErrorMenu
@@ -34,8 +35,11 @@ const ChooseCity = () => {
 
   const getNewWeatherData = useSelector((state) => state.searchCityWeather.newLocationWeather)
   const getZipWeatherData = useSelector((state) => state.searchZipWeather.newZipLocation)
+  const savedLocationsData = useSelector((state) => state.saveCurrentCity.savedLocationsData)
+  const actuallyCityName = useSelector((state) => state.dailyWeatherData.dailyWeatherData.city)
   const dispatch = useDispatch();
 
+ 
   const [cityName, setCityName] = useState('')
   const [zipData, setZipData] = useState('')
   const [isOnSaveOption, setIsOnSaveOption] = useState(true);
@@ -70,7 +74,6 @@ const ChooseCity = () => {
   }
 
   const ToSearchCityName = () => {
-    // GetUserSearchLocation(cityName);
     dispatch(setUserSearch(cityName)) 
     setCityName('') 
     setSaveBtnActive()
@@ -91,7 +94,6 @@ const ChooseCity = () => {
         countryCode: countryCode 
       }
 
-      // GetUserSearchFromZipCode(zipObj)
       dispatch(setZipSearch(zipObj))
       setZipData('')
       setSaveBtnActive()
@@ -100,11 +102,27 @@ const ChooseCity = () => {
     }
   }
 
+  //## Save to LocalStorage
+// useEffect(() => {
+//   const newLocations = JSON.parse(window.localStorage.getItem('SavedWeatherLocation')) || [];
+//   const savedAllLocations = savedLocationsData;
+//   const locationToPage = newLocations.concat(savedAllLocations);
+//   // setSavedLocations(locationToPage)
+//   console.log(newLocations, savedAllLocations)
+//   dispatch(saveCity(locationToPage))
+// },[])
+
+
+// useEffect(() => {
+//   window.localStorage.setItem('SavedWeatherLocation', JSON.stringify(savedLocationsData));
+// }, [savedLocationsData])
+//######
+
   const ToSaveSearch = () => {
-    ToSaveUsersLocations({
+    dispatch(saveCity({
       id: uuidv4(),
-      cityName: locationWeather.city
-    })
+      cityName: actuallyCityName
+    }))
 
     setIsOnSaveOption(false)
   }
@@ -126,9 +144,6 @@ const ChooseCity = () => {
           }
         </SavedLocationWrapper>
 
-// const pattern = /[0-9]+,\s*[a-z]+/gmi,
-// 	str = '00046,us';
-// console.log(pattern.test(str));
 
   return(
     <ChooseCityWrapper>

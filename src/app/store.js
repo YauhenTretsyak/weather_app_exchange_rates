@@ -6,6 +6,7 @@ import locationSlice from '../features/getUserLocationWeather/getUserLocationWea
 import dailyWeatherDataSlice from '../features/setDailyWeather/setDailyWeather';
 import newCityWeatherSlice from '../features/setUserSearch/setUserSearch';
 import zipSearchWeatherSlice from '../features/setZipSearch/setZipSearch';
+import saveCurrentCitySlice from '../features/saveCurrentCity/saveCurrentCity';
 
 export default configureStore({
   reducer: {
@@ -16,5 +17,6 @@ export default configureStore({
     dailyWeatherData: dailyWeatherDataSlice,
     searchCityWeather: newCityWeatherSlice,
     searchZipWeather: zipSearchWeatherSlice,
+    saveCurrentCity: saveCurrentCitySlice,
   }
 })

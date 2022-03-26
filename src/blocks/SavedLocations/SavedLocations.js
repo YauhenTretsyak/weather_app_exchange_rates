@@ -1,22 +1,24 @@
-import { useContext } from 'react';
-import { LocationContext } from '../../context/locationService'
+import { useDispatch, useSelector } from 'react-redux';
 import { SavedLocationsWrapper, SavedCity, Description, RemoveBtn } from './SavedLocations.styles'
+import { removeCity } from '../../features/saveCurrentCity/saveCurrentCity';
+import { setUserSearch } from '../../features/setUserSearch/setUserSearch';
 
 
 const SavedLocations = (props) => {
   const { id, cityName, setSaveBtnActive } = props;
-  const { savedLocationsData, GetUserSearchLocation, ToRemoveSavedLocations } = useContext(LocationContext);
-
+  const dispatch = useDispatch()
+  const { savedLocationsData } = useSelector((state) => state.saveCurrentCity)
+console.log(cityName)
 
   const ToShowHandler = () => {
     const CardData = savedLocationsData.filter((item) => {return item.id === id})
     
-    GetUserSearchLocation(CardData[0].cityName)
+    dispatch(setUserSearch(CardData[0].cityName))
   }
 
   const ToRemoveHandler = () => {
     const NewCardData = savedLocationsData.filter((item) => {return item.id !== id})
-    ToRemoveSavedLocations(NewCardData)
+    dispatch(removeCity(NewCardData))
     setSaveBtnActive()
   }
 

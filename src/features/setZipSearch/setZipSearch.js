@@ -33,7 +33,9 @@ const zipSearchWeatherSlice = createSlice({
   },
 
   reducers: {
-    addZipLocation(){}
+    removeErrorZip: (state) => {
+      state.error = null
+    }
   },
 
   extraReducers: {
@@ -46,12 +48,12 @@ const zipSearchWeatherSlice = createSlice({
       state.newZipLocation = action.payload
 
     },
-    [setZipSearch.pending]: (state) => {
-      state.status = 'loading';
-      state.error = null;
+    [setZipSearch.rejected]: (state) => {
+      state.status = 'error';
+      state.error = true;
     }
   }
 })
 
-export const { addZipLocation } = zipSearchWeatherSlice.actions
+export const { removeErrorZip } = zipSearchWeatherSlice.actions
 export default zipSearchWeatherSlice.reducer;

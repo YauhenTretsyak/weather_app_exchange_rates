@@ -34,7 +34,9 @@ const newCityWeatherSlice = createSlice({
   },
 
   reducers: {
-    addNewLocation(){}
+    removeErrorName: (state) => {
+      state.error = null;
+    }
   },
 
   extraReducers: {
@@ -42,18 +44,18 @@ const newCityWeatherSlice = createSlice({
       state.status = 'loading';
       state.error = null;
     },
+    [setUserSearch.rejected]: (state, action) => {
+      state.status = 'error';
+      state.error = true;
+      console.log(state.error)
+    },
     [setUserSearch.fulfilled]: (state, action) => {
       state.status = 'resolved';
       state.newLocationWeather = action.payload
-
-    },
-    [setUserSearch.pending]: (state) => {
-      state.status = 'loading';
-      state.error = null;
     },
 
   }
 })
 
-export const { addNewLocation } = newCityWeatherSlice.actions;
+export const { removeErrorName } = newCityWeatherSlice.actions;
 export default newCityWeatherSlice.reducer;

@@ -1,4 +1,8 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { removeErrorName } from '../../features/setUserSearch/setUserSearch';
+import { removeErrorZip } from '../../features/setZipSearch/setZipSearch';
 import styled from 'styled-components';
+import { useEffect, useState } from 'react';
 
 const ErrorMenuWrapper = styled.div`
   display: ${props => props.isError ? 'flex' : 'none'};
@@ -24,12 +28,34 @@ const CloseBtn = styled.p`
 `
 
 const ErrorMenu = (props) => {
-  const { isError, error_message, ToCloseErrorMenu } = props;
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isError, setIsError] = useState(false);  
+  const errorCityName = useSelector((state) => state.searchZipWeather.error)
+  const errorZipCode = useSelector((state) => state.searchCityWeather.error)
+
+  const dispatch = useDispatch();
+
+  const ToCloseErrorMenu = () => {
+    dispatch(removeErrorName());
+    dispatch(removeErrorZip());
+  }
+
+  useEffect(() => {
+    if(errorCityName) {
+      setErrorMessage("city's name")
+      setIsError(true)
+    } else if(errorZipCode) {
+      setErrorMessage("city's zipCode")
+      setIsError(true)
+    } else {
+      setIsError(false)
+    }
+  }, [errorCityName, errorZipCode])
 
   return(
     <ErrorMenuWrapper isError={ isError }>
       <ErrorInfo>
-      Please write correctly { error_message }
+      Please write correctly { errorMessage }
       </ErrorInfo>
       <CloseBtn
         onClick={ ToCloseErrorMenu }
