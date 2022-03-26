@@ -73,7 +73,6 @@ const ChooseCity = () => {
       str = zipData;
     
     if(pattern.test(str)) {
-      console.log(pattern.test(zipData));
       const zipArr = zipData.split(',');
       const zipNumber = +zipArr[0].trim();
       const countryCode = zipArr[1].trim();
@@ -103,7 +102,7 @@ const ChooseCity = () => {
       id: uuidv4(),
       cityName: actuallyCityName
     }))
-    
+
     const locationToPage = savedLocationsData.concat({
       id: uuidv4(),
       cityName: actuallyCityName

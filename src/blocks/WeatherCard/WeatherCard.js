@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { dailyWeather } from '../../features/setDailyWeather/setDailyWeather';
 
 import {
@@ -14,6 +15,7 @@ import {
 
 const WeatherCard = () => {
 
+  const dailyWeather = useSelector((state) => state.dailyWeatherData.dailyWeatherData)
   const { temperature, pressure, windSpeed, icon } = dailyWeather;
   const [temp, getTemp] = useState(temperature);
   const tempCelsius = temperature-273;

@@ -1,23 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export let dailyWeather = {
-  name: '--',
-  main: {
-    temp: '--',
-    pressure: '--'
-  },
-  weather: [
-    {
-      icon: '01d'
-    }
-  ],
-  wind: {
-    speed: '--'
-  },
-}
-
-console.log(dailyWeather)
-
 const setDailyWeatherSlice = createSlice({
   name: 'dailyWeather',
   initialState: {
@@ -50,7 +32,7 @@ const setDailyWeatherSlice = createSlice({
         icon: action.payload.weather[0].icon,
       }
 
-      dailyWeather = state.dailyWeatherData
+      // dailyWeather = state.dailyWeatherData
       // console.log(dailyWeather)
     }
   }
