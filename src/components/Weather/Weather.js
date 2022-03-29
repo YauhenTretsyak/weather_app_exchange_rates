@@ -3,6 +3,7 @@ import { WeatherCard, ChooseCity } from '../../blocks';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUserLocation } from '../../features/getUserLocationWeather/getUserLocationWeather';
 import { setDailyWeatherData } from '../../features/setDailyWeather/setDailyWeather';
+import { getFiveDaysWeather } from '../../features/getFiveDaysWeather/getFiveDaysWeather';
 // import { dailyWeather } from '../../features/setDailyWeather/setDailyWeather';
 
 import { WeatherSection, WheaterInfoWrapper, CityName } from './Weather.styles';
@@ -43,6 +44,9 @@ const Weather = () => {
 
  useEffect(() => {
   setCityName(dailyWeather.city)
+  if(dailyWeather.city && dailyWeather.city !== '--') {
+    dispatch(getFiveDaysWeather(dailyWeather.city))
+  }
  }, [dailyWeather])
 
   return (

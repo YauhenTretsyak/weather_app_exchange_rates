@@ -3,7 +3,7 @@ import { theme } from './styles/theme';
 import GlobalStyle from './styles/GlobalStyle';
 import { HelmetProvider } from 'react-helmet-async';
 import { HelmetBlock } from './blocks';
-import { Header, Weather, Footer } from './components';
+import { Header, LongTimeWeather, Weather, Footer } from './components';
 import favicon from './assets/favicon.png';
 
 const App = () => {
@@ -19,6 +19,7 @@ const App = () => {
           faviconUrl={ favicon }
         />
         <Header />
+        <LongTimeWeather />
         <Weather />
         <Footer />
       </ThemeProvider>

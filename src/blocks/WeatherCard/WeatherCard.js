@@ -57,7 +57,8 @@ const WeatherCard = () => {
       setIsTemPositive(false);
     }
 
-    setWindSpeedKm(mathFloorFunc(windSpeed * 3.6));
+    // setWindSpeedKm(mathFloorFunc(windSpeed * 3.6)); // km/h
+    setWindSpeedKm(windSpeed);
 
   }, [tempCelsius, windSpeed])
 
@@ -83,7 +84,7 @@ const WeatherCard = () => {
           Pressure: <span>{ pressure } hPa</span>
         </PressureInfo>
         <WindSpeedInfo as={PressureInfo}>
-          Wind speed: <span>{ windSpeedKm } km/h</span>
+          Wind speed: <span>{ windSpeedKm } m/s</span>
         </WindSpeedInfo>
 
         <ToggleBtn  
