@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/weather_app_exchange_rates/static/js/main.9c6125be.js",
+    "main.js": "/weather_app_exchange_rates/static/js/main.b874803b.js",
     "static/media/bg.jpg": "/weather_app_exchange_rates/static/media/bg.12caaee69777cf6a86c3.jpg",
     "static/media/favicon.png": "/weather_app_exchange_rates/static/media/favicon.95c0831cc9ade102856c.png",
     "index.html": "/weather_app_exchange_rates/index.html",
-    "main.9c6125be.js.map": "/weather_app_exchange_rates/static/js/main.9c6125be.js.map"
+    "main.b874803b.js.map": "/weather_app_exchange_rates/static/js/main.b874803b.js.map"
   },
   "entrypoints": [
-    "static/js/main.9c6125be.js"
+    "static/js/main.b874803b.js"
   ]
 }
