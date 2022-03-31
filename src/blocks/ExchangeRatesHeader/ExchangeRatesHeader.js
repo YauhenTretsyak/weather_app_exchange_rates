@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addRates, getExchangeRates } from '../../features/getExhangeRates/getExhangeRates'
 
@@ -17,6 +17,7 @@ const ExchangeRatesHeader = () => {
   const currency = useSelector((state) => state.ratesData);
   const dispatch = useDispatch()
   
+
   useEffect(() => {
     dispatch(getExchangeRates())
   }, [])

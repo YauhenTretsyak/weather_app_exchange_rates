@@ -1,6 +1,7 @@
 const screen_breakpoints = {
   xxs: '@media only screen and (min-width: 375px)',
   xs: '@media only screen and (min-width: 425px)',
+  xs_spec: '@media only screen and (min-width: 486px)',
   xss: '@media only screen and (min-width: 513px)',
   sm: '@media only screen and (min-width: 576px)',
   md: '@media only screen and (min-width: 768px)',

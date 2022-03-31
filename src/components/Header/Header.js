@@ -18,14 +18,14 @@ const Header = () => {
   //   console.log(test)
   //   console.log(test2)
   // }
-
+ 
   const city = useSelector((state) => state.dailyWeatherData.dailyWeatherData.city);
   const country = useSelector((state) => state.fiveDaysWeather.country)
-   
+     
   return(
     <HeaderSection>
       <HeaderTitle>
-        City: { city || '--' }, { country }
+        City: { city }, { country }
       </HeaderTitle>
       {/* <button onClick={ testClick }>On</button> */}
       <ExchangeRatesHeader />

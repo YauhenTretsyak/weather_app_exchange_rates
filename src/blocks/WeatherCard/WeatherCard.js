@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
+import { weather_icons } from '../../dataComponents/icons';
 import { dailyWeather } from '../../features/setDailyWeather/setDailyWeather';
 
 import {
@@ -19,6 +21,8 @@ const WeatherCard = () => {
   const { temperature, pressure, windSpeed, icon } = dailyWeather;
   const [temp, getTemp] = useState(temperature);
   const tempCelsius = temperature-273;
+
+  const weatherIcon = weather_icons.filter(item => item.id === icon)
 
   const mathFloorFunc = (item) => {
     return(
@@ -66,10 +70,21 @@ const WeatherCard = () => {
     getTemp(`${ mathFloorFunc(temperature - 273) } °C`); 
   }, [temperature])
 
+
+  const todayIconWeather = weatherIcon.map(item => {
+    return(
+      <img 
+        key={ uuidv4() }
+        src={ item.icon } 
+        alt='weather_icon'
+      />
+    )
+  })
+
   return(
     <WeatherCardWrapper>
       <WeatherIcon>
-        <img src={`https://openweathermap.org/img/wn/${ icon || '10d' }@2x.png`} alt='weather_icon'/>
+        { todayIconWeather }
       </WeatherIcon>
       <WeatherInfoWrapper>
         <TempInfo 

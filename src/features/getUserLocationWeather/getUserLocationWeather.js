@@ -5,7 +5,7 @@ export const apiKey = '9980f38164f1b2cf7d9081d38f49a7fe';
 
 export const getUserLocation = createAsyncThunk(
   'location/getUserLocation',
-  async function(coords) {
+  async (coords) => {
     const { latitude, longitude } = coords;
     const response = await fetch(`${ apiUrl }geo/1.0/reverse?lat=${ latitude }&lon=${ longitude }&limit=5&appid=${apiKey}`);
     const data = await response.json();
@@ -36,10 +36,13 @@ const locationSlice = createSlice({
     },
     status: null,
     error: null,
+    isDataLoaded: false,
   },
 
   reducers: {
-    addLocation(){}
+    setIsDataLoaded: (state, action) => {
+      state.isDataLoaded = action.payload;
+    }
   },
 
   extraReducers: {
@@ -55,5 +58,5 @@ const locationSlice = createSlice({
   }
 })
 
-export const { addLocation } = locationSlice.actions;
+export const { setIsDataLoaded } = locationSlice.actions;
 export default locationSlice.reducer;
