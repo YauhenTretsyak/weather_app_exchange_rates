@@ -72,7 +72,7 @@ const NightWeather = styled(DayWeather)`
 
   &::before {
     content: 'Weather at night';
-    color: #060452;
+    color: #00fff3;
   }
 
   & p {

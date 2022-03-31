@@ -13,9 +13,13 @@ const LongTimeWeatherItemWrapper = styled.div`
   position: relative;
   margin-bottom: .7rem;
   width: 80%;
-  padding-left: 3rem;
+  padding-left: 1.5rem;
   padding-bottom: .7rem;
   border-bottom: .1rem solid #00fff3;
+
+  ${ screen_breakpoints.xs } {
+    padding-left: 3rem;
+  }
 
   ${ screen_breakpoints.xs_spec } {
     padding-left: 0;
@@ -38,9 +42,16 @@ const LongTimeWeatherItemWrapper = styled.div`
 const IconWrapper = styled(ImageContainer)`
   position: absolute;
   top: -.2rem;
-  left: -.3rem;
-  width: 3rem;
-  height: 3rem;
+  left: -1rem;
+  width: 2.2rem;
+  height: 2.2rem;
+
+  ${ screen_breakpoints.xs } {
+    top: -.2rem;
+    left: -.3rem;
+    width: 3rem;
+    height: 3rem;
+  }
 
   ${ screen_breakpoints.xs_spec } {
     position: relative;
@@ -63,8 +74,12 @@ const DayNameInfo = styled.h2`
 const DayDate = styled.span`
   margin-left: .6rem;
   color: #fff4f4;
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   font-weight: 300;
+
+  ${ screen_breakpoints.md } {
+    font-size: 1.6rem;
+  }
 `
 //warm color #ff8100
 const WindSpedInfo = styled.p`
@@ -129,9 +144,16 @@ const LongTimeWeatherItem = (props) => {
   const [isCold, setIsCold] = useState(false);
   let dayName = '--';
 
+  
   let data = new Date(`${ dt }`*1000);
   let day = data.getDay();
-  const dayDate = dateTxt.slice(5,10).replace('-','.');
+  const dayDateArr = dateTxt.slice(0,10).split('-');
+  
+  const dateObj = {
+    day: dayDateArr[2],
+    mounth: dayDateArr[1],
+    year: dayDateArr[0].slice(2,4)
+  }
 
   const mathFloorFunc = (item) => {
     return(
@@ -188,7 +210,7 @@ const LongTimeWeatherItem = (props) => {
       <DayNameInfo>
         { dayName || '--' } 
         <DayDate>
-          { dayDate }
+          { `${dateObj.day}.${dateObj.mounth}.${dateObj.year}` }
         </DayDate>
       </DayNameInfo>
       <TempInfo isCold={ isCold }>

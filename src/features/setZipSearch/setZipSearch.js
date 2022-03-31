@@ -49,6 +49,10 @@ const zipSearchWeatherSlice = createSlice({
     [setZipSearch.fulfilled]: (state, action) => {
       state.status = 'resolved';
       state.newZipLocation = action.payload
+
+      if(action.payload.cod !== 200) {
+        state.error = true;
+      }
     },
     [setZipSearch.rejected]: (state) => {
       state.status = 'error';
