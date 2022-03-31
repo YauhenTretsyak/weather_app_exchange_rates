@@ -1,6 +1,7 @@
 Link do podglądu projektu na gh-pages: [React Weather App](https://yauhentretsyak.github.io/weather_app_exchange_rates/)<br>
 
 wersja 0.1.1 - dodano kurs dolara, euro
+wersja 0.2.0 - dodano pogoda długoterminowa na 5 dni, logika została przepisana z contextApi na Redux Toolkit 
 
 Aplikacja na podstawie lokalizacji użytkownika (użytkownik na początku musi wyrazić zgodę na pobieranie danych lokalizacji) wyświetla dane pogody aktualnego miasta.<br>
 Przyciskiem można wybrać wyświetlanie temperatury w K lub C. <br>
