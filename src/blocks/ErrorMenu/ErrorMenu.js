@@ -36,6 +36,8 @@ const ErrorMenu = () => {
   const [isError, setIsError] = useState(false);  
   const errorCityName = useSelector((state) => state.searchCityWeather.error)
   const errorZipCode = useSelector((state) => state.searchZipWeather.error)
+  const errorLocation = useSelector((state) => state.locationData.error)
+
 
   const dispatch = useDispatch();
 
@@ -46,20 +48,20 @@ const ErrorMenu = () => {
 
   useEffect(() => {
     if(errorCityName) {
-      setErrorMessage("city's name")
+      setErrorMessage(" Please write correctly city's name")
       setIsError(true)
     } else if(errorZipCode) {
-      setErrorMessage("city's zipCode")
+      setErrorMessage(" Please write correctly city's zipCode")
       setIsError(true)
     } else {
       setIsError(false)
     }
-  }, [errorCityName, errorZipCode])
+  }, [errorCityName, errorZipCode, errorLocation])
 
   return(
     <ErrorMenuWrapper isError={ isError }>
       <ErrorInfo>
-      Please write correctly { errorMessage }
+       { errorMessage }
       </ErrorInfo>
       <CloseBtn
         onClick={ ToCloseErrorMenu }

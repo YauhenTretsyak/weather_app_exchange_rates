@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { useSelector } from 'react-redux';
-import { ExchangeRatesHeader } from '../../blocks';
+import { ExchangeRatesHeader, BanLocalizationMenu } from '../../blocks';
 
 import { HeaderSection, HeaderTitle } from './Header.styles';
 
@@ -18,12 +18,14 @@ const Header = () => {
   //   console.log(test)
   //   console.log(test2)
   // }
+  
  
   const city = useSelector((state) => state.dailyWeatherData.dailyWeatherData.city);
-  const country = useSelector((state) => state.fiveDaysWeather.country)
+  const country = useSelector((state) => state.fiveDaysWeather.country);
      
   return(
     <HeaderSection>
+      <BanLocalizationMenu />
       <HeaderTitle>
         City: { city }, { country }
       </HeaderTitle>

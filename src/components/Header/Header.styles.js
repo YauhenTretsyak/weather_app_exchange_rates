@@ -3,6 +3,7 @@ import { SectionContainer, SectionTitle } from '../../styles/StyledElements';
 import screen_breakpoints from '../../styles/StyledElements/screen_breakpoints';
 
 const HeaderSection = styled(SectionContainer)`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;

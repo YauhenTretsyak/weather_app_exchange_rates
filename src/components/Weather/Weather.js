@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { WeatherCard, ChooseCity } from '../../blocks';
 import { useSelector, useDispatch } from 'react-redux';
-import { getUserLocation } from '../../features/getUserLocationWeather/getUserLocationWeather';
+import { getUserLocation, addErrorLocation } from '../../features/getUserLocationWeather/getUserLocationWeather';
 import { setDailyWeatherData } from '../../features/setDailyWeather/setDailyWeather';
 import { getFiveDaysWeather } from '../../features/getFiveDaysWeather/getFiveDaysWeather';
 
@@ -32,6 +32,7 @@ const Weather = () => {
 
       function(error) {
         console.log(error)
+        dispatch(addErrorLocation());
       }
     )
   }, [])

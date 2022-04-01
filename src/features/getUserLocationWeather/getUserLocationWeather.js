@@ -36,13 +36,15 @@ const locationSlice = createSlice({
     },
     status: null,
     error: null,
-    isDataLoaded: false,
   },
 
   reducers: {
-    setIsDataLoaded: (state, action) => {
-      state.isDataLoaded = action.payload;
-    }
+    removeErrorLocation: (state) => {
+      state.error = null;
+    },
+    addErrorLocation: (state) => {
+      state.error = true;
+    },
   },
 
   extraReducers: {
@@ -53,10 +55,14 @@ const locationSlice = createSlice({
     [getUserLocation.fulfilled]: (state, action) => {
       state.status = 'resolved';
       state.locationWeather = action.payload;
+      
+      if(action.payload.cod !== 200) {
+        state.error = true;
+      }
     },
     [getUserLocation.rejected]: (state, action) => {}
   }
 })
 
-export const { setIsDataLoaded } = locationSlice.actions;
+export const { removeErrorLocation, addErrorLocation } = locationSlice.actions;
 export default locationSlice.reducer;
