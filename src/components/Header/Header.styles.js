@@ -24,6 +24,25 @@ const HeaderTitle = styled(SectionTitle)`
   ${ screen_breakpoints.xss } {
     width: fit-content;
   }
+
+  &::before {
+    content: '${props => props.dateToday}';
+    position: absolute;
+    top: 3.3rem;
+    left: .6rem;
+    color: #fff4f4;
+    font-size: 1.3rem;
+    font-weight: 300;
+
+    ${ screen_breakpoints.md } {
+      top: 4.7rem;
+      font-size: 1.6rem;
+    }
+
+    ${ screen_breakpoints.xl } {
+      font-size: 2rem;
+    }
+  }
 `
 
 const SearchButton = styled(ScrollIntoView)`

@@ -7,10 +7,12 @@ import { HeaderSection, HeaderTitle, SearchButton, Button } from './Header.style
 
 const Header = () => {
 
-  // let data = new Date(1648414800*1000);
-  // let day = data.getDay();
+  let data = new Date();
+  let day = data.getDay() < 10 ? `0${ data.getDay() }` : data.getDay();
+  let year = data.getFullYear() < 10 ? `0${ data.getFullYear() }` : data.getFullYear();
+  let mounth = data.getMonth() < 10 ? `0${ data.getMonth() }` : data.getMonth();
 
-  // console.log(day)
+  const dateToday = `${ day }.${ mounth }.${ year }`
 
   // const testClick = () => {
   //   let test = '2022-03-27 18:00:00'.slice(11);
@@ -22,11 +24,12 @@ const Header = () => {
  
   const city = useSelector((state) => state.dailyWeatherData.dailyWeatherData.city);
   const country = useSelector((state) => state.fiveDaysWeather.country);
+  console.log(dateToday)
      
   return(
     <HeaderSection>
       <BanLocalizationMenu />
-      <HeaderTitle>
+      <HeaderTitle dateToday={ dateToday }>
         City: { city }, { country }
 
         <SearchButton selector="#search_section">
