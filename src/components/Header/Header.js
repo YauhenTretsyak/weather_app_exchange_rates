@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { ExchangeRatesHeader, BanLocalizationMenu } from '../../blocks';
 
-import { HeaderSection, HeaderTitle } from './Header.styles';
+import { HeaderSection, HeaderTitle, SearchButton, Button } from './Header.styles';
 
 
 const Header = () => {
@@ -28,6 +28,12 @@ const Header = () => {
       <BanLocalizationMenu />
       <HeaderTitle>
         City: { city }, { country }
+
+        <SearchButton selector="#search_section">
+          <Button>
+            Find city
+          </Button>
+        </SearchButton>
       </HeaderTitle>
       {/* <button onClick={ testClick }>On</button> */}
       <ExchangeRatesHeader />

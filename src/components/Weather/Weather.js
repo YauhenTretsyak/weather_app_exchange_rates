@@ -51,7 +51,7 @@ const Weather = () => {
 
 
   return (
-    <WeatherSection>
+    <WeatherSection id='search_section'>
       <WheaterInfoWrapper>
         <CityName>{ cityName }</CityName>
         <WeatherCard />
