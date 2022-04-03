@@ -4,15 +4,15 @@ import EU_flag from '../assets/flags/EU.png';
 
 const flagsData = [
   {
-    id: 'PLN',
+    id: 'PL',
     flag: PL_flag
   },
   {
-    id: 'USD',
+    id: 'US',
     flag: US_flag
   },
   {
-    id: 'EUR',
+    id: 'EU',
     flag: EU_flag
   }
 ]

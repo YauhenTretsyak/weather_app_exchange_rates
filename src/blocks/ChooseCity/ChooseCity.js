@@ -140,6 +140,7 @@ const ChooseCity = () => {
           text_example='example: Warsaw'
         >
           <Input 
+            autoComplete='off'
             onChange={ getCityName }
             value={ cityName } 
             placeholder='City'
