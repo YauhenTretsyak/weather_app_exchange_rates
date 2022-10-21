@@ -1,8 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const apiUrlCurrency = 'https://free.currconv.com';
-const keyCurrency = '801b3e3eb2e4db36a239'; 
-// const keyCurrency = '28d808b7165a042b6b12'; //blocked
+const keyCurrency = process.env.REACT_APP_WEATHER_API_KEY; 
 
 const mathFloorFunc = (item) => {
   return(
