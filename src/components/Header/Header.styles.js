@@ -17,6 +17,7 @@ const HeaderSection = styled(SectionContainer)`
 `
 const HeaderTitle = styled(SectionTitle)`
   position: relative;
+  display: flex;
   margin-bottom: 2rem;
   margin-right: 1rem;
   width: 100%;
@@ -43,6 +44,11 @@ const HeaderTitle = styled(SectionTitle)`
       font-size: 2rem;
     }
   }
+`
+
+const CityTitle = styled.p`
+  margin-right: .5rem;
+  text-shadow: .1rem .2rem .1rem ${({theme}) => theme.colors.black};
 `
 
 const SearchButton = styled(ScrollIntoView)`
@@ -80,4 +86,4 @@ const Button = styled.a`
   text-shadow: .1rem .2rem .3rem black;
 `
 
-export { HeaderSection, HeaderTitle, SearchButton, Button }
+export { HeaderSection, HeaderTitle, CityTitle, SearchButton, Button }

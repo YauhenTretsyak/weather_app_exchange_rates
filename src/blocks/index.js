@@ -7,6 +7,7 @@ import BanLocalizationMenu from "./BanLocalizationMenu/BanLocalizationMenu";
 import ExchangeRatesHeader from './ExchangeRatesHeader/ExchangeRatesHeader';
 import ExchangeRatesItem from "./ExchangeRatesItem/ExchangeRatesItem";
 import LongTimeWeatherItem from "./LongTimeWeatherItem/LongTimeWeatherItem";
+import LoadingSpinner from "./LoadingSpinner/LoadingSpinner";
 
 export { 
   HelmetBlock, 
@@ -17,5 +18,6 @@ export {
   ExchangeRatesItem, 
   ErrorMenu,
   BanLocalizationMenu,
-  LongTimeWeatherItem 
+  LongTimeWeatherItem,
+  LoadingSpinner, 
 };
