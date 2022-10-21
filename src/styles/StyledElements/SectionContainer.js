@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import screen_breakpoint from './screen_breakpoints';
+import styled from 'styled-components'
+import screen_breakpoint from './screen_breakpoints'
 
 const SectionContainer = styled.div`
   margin: 3rem 1.5rem;
@@ -31,6 +31,6 @@ const SectionContainer = styled.div`
   ${screen_breakpoint.xxl}{
     max-width: 128rem;
   }
-`;
+`
 
-export default SectionContainer;
+export default SectionContainer

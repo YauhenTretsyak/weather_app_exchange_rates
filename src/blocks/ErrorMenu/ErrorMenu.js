@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { removeErrorName } from '../../features/setUserSearch/setUserSearch';
-import { removeErrorZip } from '../../features/setZipSearch/setZipSearch';
-import styled from 'styled-components';
+import {useEffect, useState} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import {removeErrorName} from '../../features/setUserSearch/setUserSearch'
+import {removeErrorZip} from '../../features/setZipSearch/setZipSearch'
+import styled from 'styled-components'
 
 const ErrorMenuWrapper = styled.div`
   display: ${props => props.isError ? 'flex' : 'none'};
@@ -32,42 +32,42 @@ const CloseBtn = styled.p`
 `
 
 const ErrorMenu = () => {
-  const [errorMessage, setErrorMessage] = useState('');
-  const [isError, setIsError] = useState(false);  
-  const errorCityName = useSelector((state) => state.searchCityWeather.error)
-  const errorZipCode = useSelector((state) => state.searchZipWeather.error)
-  const errorLocation = useSelector((state) => state.locationData.error)
+    const [errorMessage, setErrorMessage] = useState('')
+    const [isError, setIsError] = useState(false)  
+    const errorCityName = useSelector((state) => state.searchCityWeather.error)
+    const errorZipCode = useSelector((state) => state.searchZipWeather.error)
+    const errorLocation = useSelector((state) => state.locationData.error)
 
 
-  const dispatch = useDispatch();
+    const dispatch = useDispatch()
 
-  const ToCloseErrorMenu = () => {
-    dispatch(removeErrorName());
-    dispatch(removeErrorZip());
-  }
-
-  useEffect(() => {
-    if(errorCityName) {
-      setErrorMessage(" Please write correctly city's name")
-      setIsError(true)
-    } else if(errorZipCode) {
-      setErrorMessage(" Please write correctly city's zipCode")
-      setIsError(true)
-    } else {
-      setIsError(false)
+    const ToCloseErrorMenu = () => {
+        dispatch(removeErrorName())
+        dispatch(removeErrorZip())
     }
-  }, [errorCityName, errorZipCode, errorLocation])
 
-  return(
-    <ErrorMenuWrapper isError={ isError }>
-      <ErrorInfo>
-       { errorMessage }
-      </ErrorInfo>
-      <CloseBtn
-        onClick={ ToCloseErrorMenu }
-      >X</CloseBtn>
-    </ErrorMenuWrapper>
+    useEffect(() => {
+        if (errorCityName) {
+            setErrorMessage(' Please write correctly city\'s name')
+            setIsError(true)
+        } else if (errorZipCode) {
+            setErrorMessage(' Please write correctly city\'s zipCode')
+            setIsError(true)
+        } else {
+            setIsError(false)
+        }
+    }, [errorCityName, errorZipCode, errorLocation])
+
+    return (
+        <ErrorMenuWrapper isError={ isError }>
+            <ErrorInfo>
+                { errorMessage }
+            </ErrorInfo>
+            <CloseBtn
+                onClick={ ToCloseErrorMenu }
+            >X</CloseBtn>
+        </ErrorMenuWrapper>
     )
 }
 
-export default ErrorMenu;
+export default ErrorMenu

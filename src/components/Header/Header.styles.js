@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import { SectionContainer, SectionTitle } from '../../styles/StyledElements';
-import ScrollIntoView from 'react-scroll-into-view';
-import screen_breakpoints from '../../styles/StyledElements/screen_breakpoints';
-import searchLupa from '../../assets/icons/search_lupa.png';
+import styled from 'styled-components'
+import {SectionContainer, SectionTitle} from '../../styles/StyledElements'
+import ScrollIntoView from 'react-scroll-into-view'
+import screen_breakpoints from '../../styles/StyledElements/screen_breakpoints'
+import searchLupa from '../../assets/icons/search_lupa.png'
 
 const HeaderSection = styled(SectionContainer)`
   position: relative;
@@ -86,4 +86,4 @@ const Button = styled.a`
   text-shadow: .1rem .2rem .3rem black;
 `
 
-export { HeaderSection, HeaderTitle, CityTitle, SearchButton, Button }
+export {HeaderSection, HeaderTitle, CityTitle, SearchButton, Button}

@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { addRates, getExchangeRates } from '../../features/getExhangeRates/getExhangeRates'
+import {useEffect} from 'react'
+import {useSelector, useDispatch} from 'react-redux'
+import {getExchangeRates} from '../../features/getExhangeRates/getExhangeRates'
 
-import { v4 as uuidv4 } from 'uuid';
-import { ExchangeRatesItem } from '..';
+import {v4 as uuidv4} from 'uuid'
+import {ExchangeRatesItem} from '..'
 
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const ExchangeRatesHeaderWrapper = styled.div`
   width: 100%;
@@ -14,29 +14,27 @@ const ExchangeRatesHeaderWrapper = styled.div`
 
 const ExchangeRatesHeader = () => {
 
-  const currency = useSelector((state) => state.ratesData);
-  const dispatch = useDispatch()
+    const currency = useSelector((state) => state.ratesData)
+    const dispatch = useDispatch()
   
-  useEffect(() => {
-    dispatch(getExchangeRates())
-  }, [])
+    useEffect(() => {
+        dispatch(getExchangeRates())
+    }, [])
   
-  const currencyExchange = currency.rates.map(item => {
-    return(
-      <ExchangeRatesItem 
-        key={ uuidv4() }
-        rate={ item.rate }
-        value={ item.value }
-      />
-    )
-  })
+    const currencyExchange = currency.rates.map(item => (
+        <ExchangeRatesItem 
+            key={ uuidv4() }
+            rate={ item.rate }
+            value={ item.value }
+        />
+    ))
 
-  return(
-    <ExchangeRatesHeaderWrapper>
-      { currencyExchange }
-    </ExchangeRatesHeaderWrapper>
-  )
+    return (
+        <ExchangeRatesHeaderWrapper>
+            { currencyExchange }
+        </ExchangeRatesHeaderWrapper>
+    )
 }
 
-export default ExchangeRatesHeader;
+export default ExchangeRatesHeader
 

@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import screen_breakpoints from '../../styles/StyledElements/screen_breakpoints';
-import { SectionContainer } from '../../styles/StyledElements';
+import styled from 'styled-components'
+import screen_breakpoints from '../../styles/StyledElements/screen_breakpoints'
+import {SectionContainer} from '../../styles/StyledElements'
 
 const FooterSection = styled(SectionContainer)``
 
@@ -20,20 +20,18 @@ const AuthorLink = styled.a`
   color: ${({theme}) => theme.colors.silver};
 `
 
-const Footer = () => {
-  return(
+const Footer = () => (
     <FooterSection>
-      <Copyrights>
+        <Copyrights>
         Designed & Developed by
-        <AuthorLink 
-          href='https://yauhentretsyak.github.io/portfolio/'
-          target='_blank'
-        >
+            <AuthorLink 
+                href="https://yauhentretsyak.github.io/portfolio/"
+                target="_blank"
+            >
           Yauhen Tretsyak
-        </AuthorLink>
-      </Copyrights>
+            </AuthorLink>
+        </Copyrights>
     </FooterSection>
-  )
-}
+)
 
 export default Footer

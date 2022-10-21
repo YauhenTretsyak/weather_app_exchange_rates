@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import screen_breakpoints from '../../styles/StyledElements/screen_breakpoints';
-import { FlexContainer, ImageContainer, Button } from '../../styles/StyledElements';
+import styled from 'styled-components'
+import screen_breakpoints from '../../styles/StyledElements/screen_breakpoints'
+import {FlexContainer, ImageContainer, Button} from '../../styles/StyledElements'
 
 const WeatherCardWrapper = styled(FlexContainer)`
   justify-content: space-around;
@@ -39,9 +39,9 @@ const TempInfo = styled.p`
 
   & > span {
     font-weight: 700;
-    color: ${props => props.tempIndication ? 
-          ({theme}) => theme.colors.orange : 
-          ({theme}) => theme.colors.silver};
+    color: ${props => props.tempIndication 
+        ? ({theme}) => theme.colors.orange 
+        : ({theme}) => theme.colors.silver};
   }
 `
 const PressureInfo = styled.p`
@@ -61,11 +61,11 @@ const ToggleBtn = styled(Button)`
 `
 
 export {
-  WeatherCardWrapper,
-  WeatherIcon,
-  WeatherInfoWrapper,
-  TempInfo,
-  PressureInfo,
-  WindSpeedInfo,
-  ToggleBtn
+    WeatherCardWrapper,
+    WeatherIcon,
+    WeatherInfoWrapper,
+    TempInfo,
+    PressureInfo,
+    WindSpeedInfo,
+    ToggleBtn
 }

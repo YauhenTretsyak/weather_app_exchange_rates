@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import screen_breakpoints from './screen_breakpoints';
+import styled from 'styled-components'
+import screen_breakpoints from './screen_breakpoints'
 
 const Button = styled.p`
   display: flex;
@@ -27,4 +27,4 @@ const Button = styled.p`
   }
 `
 
-export default Button;
+export default Button

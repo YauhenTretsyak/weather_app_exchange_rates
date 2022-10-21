@@ -1,0 +1,64 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "overrides": [
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "indent": [
+            "warn",
+            4
+        ],
+        "quotes": [
+            "warn",
+            "single"
+        ],
+        "semi": [
+            "warn",
+            "never"
+        ],
+        "react/jsx-curly-brace-presence": "warn",
+        "react/jsx-curly-newline": "warn",
+        "react/jsx-indent-props": "warn",
+        "react/prop-types": "off",
+        // "react/jsx-no-bind": "warn",
+        "react/react-in-jsx-scope": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "react/jsx-tag-spacing": "warn",
+        "react/self-closing-comp": "warn",
+
+        "array-callback-return": "warn",
+        "arrow-body-style": "warn",
+        "arrow-spacing": "warn",
+        "comma-spacing": "warn",
+        "dot-location": "warn",
+        "dot-notation": "warn",
+        "jsx-quotes": "warn",
+        "keyword-spacing": "warn",
+        "no-await-in-loop": "warn",
+        "no-console": "warn",
+        "no-irregular-whitespace": "warn",
+        "no-multi-spaces": "warn",
+        "no-nested-ternary": "warn",
+        "no-prototype-builtins": "warn",
+        "no-unused-expressions": "warn",
+        "no-unused-vars": "warn",
+        "object-curly-newline": "warn",
+        "object-curly-spacing": "warn",
+        "operator-linebreak": "warn",
+        // "padded-blocks": "warn",
+        "prefer-template": "warn"
+    }
+}

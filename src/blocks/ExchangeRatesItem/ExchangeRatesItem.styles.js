@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const Currency = styled.div`
   display: flex;
@@ -51,8 +51,8 @@ const Flag = styled.span`
 `
 
 export {
-  Currency,
-  CurrencyInfoWrapperLeft,
-  CurrencyInfoWrapperRight,
-  Flag
+    Currency,
+    CurrencyInfoWrapperLeft,
+    CurrencyInfoWrapperRight,
+    Flag
 }

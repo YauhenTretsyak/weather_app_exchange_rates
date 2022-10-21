@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import { weather_icons } from '../../dataComponents/icons';
+import {useEffect, useState} from 'react'
+import {v4 as uuidv4} from 'uuid'
+import {weather_icons} from '../../dataComponents/icons'
 
-import styled from 'styled-components';
-import screen_breakpoints from '../../styles/StyledElements/screen_breakpoints';
-import iconCold from '../../assets/icons/temp_cold.png';
-import iconWarm from '../../assets/icons/temp_warm.png';
-import iconWind from '../../assets/icons/wind.png';
-import { ImageContainer } from '../../styles/StyledElements';
+import styled from 'styled-components'
+import screen_breakpoints from '../../styles/StyledElements/screen_breakpoints'
+import iconCold from '../../assets/icons/temp_cold.png'
+import iconWarm from '../../assets/icons/temp_warm.png'
+import iconWind from '../../assets/icons/wind.png'
+import {ImageContainer} from '../../styles/StyledElements'
 
 const LongTimeWeatherItemWrapper = styled.div`
   position: relative;
@@ -140,87 +140,83 @@ const TempInfo = styled.p`
 
 const LongTimeWeatherItem = (props) => {
 
-  const { dt, dateTxt, windSpeed, temperature, icon } = props;
-  const [isCold, setIsCold] = useState(false);
-  let dayName = '--';
+    const {dt, dateTxt, windSpeed, temperature, icon} = props
+    const [isCold, setIsCold] = useState(false)
+    let dayName = '--'
 
   
-  let data = new Date(`${ dt }`*1000);
-  let day = data.getDay();
-  const dayDateArr = dateTxt.slice(0,10).split('-');
+    let data = new Date(`${ dt }`*1000)
+    let day = data.getDay()
+    const dayDateArr = dateTxt.slice(0, 10).split('-')
   
-  const dateObj = {
-    day: dayDateArr[2],
-    mounth: dayDateArr[1],
-    year: dayDateArr[0].slice(2,4)
-  }
-
-  const mathFloorFunc = (item) => {
-    return(
-      Math.floor((item) * 10) / 10
-    )
-  }
-
-  const temp = mathFloorFunc(temperature - 273);
-  const wind = mathFloorFunc(windSpeed);
-  
-  useEffect(() => {
-    if(temp <= 0) {
-      setIsCold(true)
-    } else {
-      setIsCold(false)
+    const dateObj = {
+        day: dayDateArr[2],
+        mounth: dayDateArr[1],
+        year: dayDateArr[0].slice(2, 4)
     }
-  }, [temp])
+
+    const mathFloorFunc = (item) => (
+        Math.floor((item) * 10) / 10
+    )
+
+    const temp = mathFloorFunc(temperature - 273)
+    const wind = mathFloorFunc(windSpeed)
+  
+    useEffect(() => {
+        if (temp <= 0) {
+            setIsCold(true)
+        } else {
+            setIsCold(false)
+        }
+    }, [temp])
 
   
-  switch(day) {
+    switch (day) {
     case 0: dayName = 'Sun' 
-      break
+        break
     case 1: dayName = 'Mon' 
-      break
+        break
     case 2: dayName = 'Tue' 
-      break
+        break
     case 3: dayName = 'Wed' 
-      break
+        break
     case 4: dayName = 'Thu' 
-      break
+        break
     case 5: dayName = 'Fri' 
-      break
+        break
     case 6: dayName = 'Sat' 
         break
-      default: dayName = '--'
-  }
+    default: dayName = '--'
+    }
 
 
-  const filteredIcon = weather_icons.filter(item => item.id === icon )
+    const filteredIcon = weather_icons.filter(item => item.id === icon )
 
-  const iconTopage = filteredIcon.map(item => {
-    return(
-      <IconWrapper
-        key={ uuidv4() }
-      >
-        <img src={ item.icon } alt='weather' />
-      </IconWrapper>
+    const iconTopage = filteredIcon.map(item => (
+        <IconWrapper
+            key={ uuidv4() }
+        >
+            <img src={ item.icon } alt="weather" />
+        </IconWrapper>
+    ))
+
+    return (
+        <LongTimeWeatherItemWrapper>
+            { iconTopage }
+            <DayNameInfo>
+                { dayName || '--' } 
+                <DayDate>
+                    { `${dateObj.day}.${dateObj.mounth}.${dateObj.year}` }
+                </DayDate>
+            </DayNameInfo>
+            <TempInfo isCold={ isCold }>
+                {temp > 0 ? '+' : ''} { temp || '--' } °C
+            </TempInfo>
+            <WindSpedInfo>
+                { wind || '--' } m/s
+            </WindSpedInfo>
+        </LongTimeWeatherItemWrapper>
     )
-  })
-
-  return(
-    <LongTimeWeatherItemWrapper>
-      { iconTopage }
-      <DayNameInfo>
-        { dayName || '--' } 
-        <DayDate>
-          { `${dateObj.day}.${dateObj.mounth}.${dateObj.year}` }
-        </DayDate>
-      </DayNameInfo>
-      <TempInfo isCold={ isCold }>
-       {temp > 0 ? '+' : ''} { temp || '--' } °C
-      </TempInfo>
-      <WindSpedInfo>
-        { wind || '--' } m/s
-      </WindSpedInfo>
-    </LongTimeWeatherItemWrapper>
-  )
 }
 
-export default LongTimeWeatherItem;
+export default LongTimeWeatherItem

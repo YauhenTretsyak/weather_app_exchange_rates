@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import screen_breakpoints from '../../styles/StyledElements/screen_breakpoints';
-import { SectionContainer } from '../../styles/StyledElements/'
+import screen_breakpoints from '../../styles/StyledElements/screen_breakpoints'
+import {SectionContainer} from '../../styles/StyledElements/'
 
 const WeatherSection = styled(SectionContainer)`
   display: flex;
@@ -26,4 +26,4 @@ const WheaterInfoWrapper = styled.div`
 
 const CityName = styled.p``
 
-export { WeatherSection, WheaterInfoWrapper, CityName }
+export {WeatherSection, WheaterInfoWrapper, CityName}

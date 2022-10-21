@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import screen_breakpoints from '../../styles/StyledElements/screen_breakpoints';
-import { FlexContainer, Button } from '../../styles/StyledElements';
+import styled from 'styled-components'
+import screen_breakpoints from '../../styles/StyledElements/screen_breakpoints'
+import {FlexContainer, Button} from '../../styles/StyledElements'
 
 const ChooseCityWrapper = styled.div`
   position: relative;
@@ -114,20 +114,20 @@ const SaveBtnContainer = styled.div`
 const SaveBtn = styled(SearchBtn)`
   margin-top: -3rem;
   margin-bottom: 1.3rem;
-  ${props => props.isOnSaveOption ?
-            'opacity: 1; box-shadow: inset 0 0 .8rem .3rem #00ff3b;' :
-            'opacity: .4; box-shadow: inset 0 0 .8rem .3rem #ff0000;'
-  }
+  ${props => props.isOnSaveOption
+        ? 'opacity: 1; box-shadow: inset 0 0 .8rem .3rem #00ff3b;'
+        : 'opacity: .4; box-shadow: inset 0 0 .8rem .3rem #ff0000;'
+}
 
   ${ screen_breakpoints.md } {
     margin: 0;
   }
 
   &:hover {
-    ${props => props.isOnSaveOption ?
-            'box-shadow: inset 0 0 1.7rem .3rem #00ff3b;' :
-            'box-shadow: inset 0 0 1.7rem .3rem #ff0000;'
-    }
+    ${props => props.isOnSaveOption
+        ? 'box-shadow: inset 0 0 1.7rem .3rem #00ff3b;'
+        : 'box-shadow: inset 0 0 1.7rem .3rem #ff0000;'
+}
   }
 `
 
@@ -137,13 +137,13 @@ const SavedLocationTitle = styled.p`
 `
 
 export {
-  ChooseCityWrapper,
-  SearchWrapper,
-  InputBox,
-  Input,
-  SearchBtn,
-  SaveBtnContainer,
-  SaveBtn,
-  SavedLocationWrapper,
-  SavedLocationTitle,
+    ChooseCityWrapper,
+    SearchWrapper,
+    InputBox,
+    Input,
+    SearchBtn,
+    SaveBtnContainer,
+    SaveBtn,
+    SavedLocationWrapper,
+    SavedLocationTitle,
 }

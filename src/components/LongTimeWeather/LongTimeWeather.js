@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { v4 as uuidv4 } from "uuid";
-import { LongTimeWeatherItem } from "../../blocks";
+import {useEffect, useState} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import {v4 as uuidv4} from 'uuid'
+import {LongTimeWeatherItem} from '../../blocks'
 
-import styled from 'styled-components';
-import { SectionContainer, FlexContainer, SectionTitle } from '../../styles/StyledElements/'
-import screen_breakpoints from "../../styles/StyledElements/screen_breakpoints";
+import styled from 'styled-components'
+import {SectionContainer, FlexContainer, SectionTitle} from '../../styles/StyledElements/'
+import screen_breakpoints from '../../styles/StyledElements/screen_breakpoints'
 
 const LongTimeWeatherSection = styled(SectionContainer)``
 const Title = styled(SectionTitle)`
@@ -82,60 +82,56 @@ const NightWeather = styled(DayWeather)`
 `
 
 const LongTimeWeather = () => {
-  const dayData = useSelector((state) => state.fiveDaysWeather.fiveDaysWeatherData.day);
-  const nightData = useSelector((state) => state.fiveDaysWeather.fiveDaysWeatherData.night);
+    const dayData = useSelector((state) => state.fiveDaysWeather.fiveDaysWeatherData.day)
+    const nightData = useSelector((state) => state.fiveDaysWeather.fiveDaysWeatherData.night)
 
-  const [night, setNight] = useState(null);
-  const [day, setDay] = useState(null)
+    const [night, setNight] = useState(null)
+    const [day, setDay] = useState(null)
 
-  const setLongTimeWeather = (daysData) => {
-   const weatherRenderData = daysData.length > 0 ? daysData.map(item => {
+    const setLongTimeWeather = (daysData) => {
+        const weatherRenderData = daysData.length > 0 ? daysData.map(item => (
+            <LongTimeWeatherItem 
+                key={ uuidv4() }
+                dt={ item.dt }
+                dateTxt={ item.dt_txt }
+                windSpeed={ item.wind.speed }
+                temperature={ item.main.temp }
+                pressure={ item.main.pressure }
+                icon={ item.weather[0].icon }
+            />
+        )) : null
 
-      return(
-        <LongTimeWeatherItem 
-          key={ uuidv4() }
-          dt={ item.dt }
-          dateTxt={ item.dt_txt }
-          windSpeed={ item.wind.speed }
-          temperature={ item.main.temp }
-          pressure={ item.main.pressure }
-          icon={ item.weather[0].icon }
-        />
-      )
-    }) : null
+        return weatherRenderData
+    }
 
-    return weatherRenderData
-  }
-
-  useEffect(() => {
-    setNight(setLongTimeWeather(nightData))
-    setDay(setLongTimeWeather(dayData))
+    useEffect(() => {
+        setNight(setLongTimeWeather(nightData))
+        setDay(setLongTimeWeather(dayData))
     
-  }, [nightData, dayData])
+    }, [nightData, dayData])
 
 
-  const longTimeWeatherSection = dayData.length > 0 ? 
-                                          <LongTimeWeatherSection>
-                                            <Title>
+    const longTimeWeatherSection = dayData.length > 0 
+        ? <LongTimeWeatherSection>
+            <Title>
                                              5 days weather
-                                            </Title>
-                                              <WeatherWrapper>
-                                                <DayWeather>
-                                                  { day }
-                                                </DayWeather>
-                                                <NightWeather>
-                                                  { night }
-                                                </NightWeather>
-                                              </WeatherWrapper>
-                                            </LongTimeWeatherSection>
-                                            :
-                                            null
+            </Title>
+            <WeatherWrapper>
+                <DayWeather>
+                    { day }
+                </DayWeather>
+                <NightWeather>
+                    { night }
+                </NightWeather>
+            </WeatherWrapper>
+        </LongTimeWeatherSection>
+        : null
 
-  return(
-    <>
-      { longTimeWeatherSection }
-    </>
-  )
+    return (
+        <>
+            { longTimeWeatherSection }
+        </>
+    )
 }
 
-export default LongTimeWeather;
+export default LongTimeWeather

@@ -20,4 +20,4 @@ const SectionTitle = styled.h3`
 
 `
 
-export default SectionTitle;
+export default SectionTitle

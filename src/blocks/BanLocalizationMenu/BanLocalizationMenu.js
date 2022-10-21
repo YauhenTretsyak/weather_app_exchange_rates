@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { removeErrorLocation } from "../../features/getUserLocationWeather/getUserLocationWeather";
+import {useEffect, useState} from 'react'
+import {useSelector, useDispatch} from 'react-redux'
+import {removeErrorLocation} from '../../features/getUserLocationWeather/getUserLocationWeather'
 
-import styled from 'styled-components';
-import { FlexContainer } from "../../styles/StyledElements";
+import styled from 'styled-components'
+import {FlexContainer} from '../../styles/StyledElements'
 
 const BanMenuWrapper = styled(FlexContainer)`
   position: absolute;
@@ -41,33 +41,33 @@ const MenuContent = styled.p`
 
 const BanLocalizationMenu = () => {
 
-  const [isError, setIsError] = useState(false);  
-  const isBanned = useSelector((state) => state.locationData.error);
+    const [isError, setIsError] = useState(false)  
+    const isBanned = useSelector((state) => state.locationData.error)
 
-  const dispatch = useDispatch();
+    const dispatch = useDispatch()
 
-  const ToCloseErrorMenu = () => {
-    dispatch(removeErrorLocation());
-  }
-
-  useEffect(() => {
-    if(isBanned) {
-      setIsError(true);
-    } else {
-      setIsError(false)
+    const ToCloseErrorMenu = () => {
+        dispatch(removeErrorLocation())
     }
-  }, [isBanned])
 
-  return(
-    <BanMenuWrapper isError={ isError }>
-      <CloseBtn
-        onClick={ ToCloseErrorMenu }
-      >X</CloseBtn>
-      <MenuContent>
+    useEffect(() => {
+        if (isBanned) {
+            setIsError(true)
+        } else {
+            setIsError(false)
+        }
+    }, [isBanned])
+
+    return (
+        <BanMenuWrapper isError={ isError }>
+            <CloseBtn
+                onClick={ ToCloseErrorMenu }
+            >X</CloseBtn>
+            <MenuContent>
         To correctly display the weather of your localization, please allow the browser to access your localization data.
-      </MenuContent>
-    </BanMenuWrapper>
-  )
+            </MenuContent>
+        </BanMenuWrapper>
+    )
 }
 
-export default BanLocalizationMenu;
+export default BanLocalizationMenu

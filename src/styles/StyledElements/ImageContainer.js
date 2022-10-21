@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const ImageContainer = styled.div`
   display: flex;
@@ -12,4 +12,4 @@ const ImageContainer = styled.div`
   }
 `
 
-export default ImageContainer;
+export default ImageContainer

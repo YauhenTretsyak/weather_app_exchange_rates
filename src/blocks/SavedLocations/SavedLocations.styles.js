@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import screen_breakpoints from '../../styles/StyledElements/screen_breakpoints';
-import { SectionContainer } from '../../styles/StyledElements';
+import screen_breakpoints from '../../styles/StyledElements/screen_breakpoints'
+import {SectionContainer} from '../../styles/StyledElements'
 
 const SavedLocationsWrapper = styled(SectionContainer)`
   position: relative;
@@ -60,8 +60,8 @@ const RemoveBtn = styled.p`
 `
 
 export { 
-  SavedLocationsWrapper, 
-  SavedCity, 
-  Description,
-  RemoveBtn
- }
+    SavedLocationsWrapper, 
+    SavedCity, 
+    Description,
+    RemoveBtn
+}
