@@ -40,23 +40,6 @@ const fiveDaysWeatherSlice = createSlice({
 
       state.fiveDaysWeatherData.night = nightData;
       state.fiveDaysWeatherData.day = dayData;
-      // const dataWeatherArr = [...nightData, ...dayData]
-
-      // console.log(dataWeatherArr);
-
-      // state.fiveDaysWeatherData = dataWeatherArr.map(item => {
-      //   let newDataWeather = dataWeatherArr.filter(item2 => item2.dt_txt.slice(0, 10) === item.dt_txt.slice(0, 10) )
-        
-      //   let fullWeatherData = []
-      //   let allData  = [...fullWeatherData, ...newDataWeather]
-        
-      //   return(
-      //     allData
-      //   )
-      // })
-      // console.log(action.payload.list)
-      // console.log(state.fiveDaysWeatherData)
-      
     },
     [getFiveDaysWeather.rejected]: (state) => {
       state.status = 'rejected'
